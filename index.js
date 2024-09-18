@@ -22,50 +22,33 @@ process.stdin.on('data', (humanChoiceNumber) => {
 const choice = (choice) => (choice % 2 === 0 ? 0 : choice % 3 === 0 ? 1 : 2)
 
 const winOrNot = (theHumanChoice, theComputerChoice) => {
+    if (theHumanChoice === theComputerChoice) return
     switch (theHumanChoice) {
         case 'Rock':
-            switch (theComputerChoice) {
-                case 'Rock':
-                    humanScore = humanScore
-                    computerScore = computerScore
-                    break
-                case 'Paper':
-                    humanScore = humanScore - 1
-                    computerScore = computerScore + 1
-                    break
-                case 'Scissors':
-                    humanScore = humanScore + 1
-                    computerScore = computerScore - 1
+            if (theComputerChoice === 'Paper') {
+                humanScore = humanScore - 1
+                computerScore = computerScore + 1
+            } else {
+                humanScore = humanScore + 1
+                computerScore = computerScore - 1
             }
             break
         case 'Paper':
-            switch (theComputerChoice) {
-                case 'Rock':
-                    humanScore = humanScore + 1
-                    computerScore = computerScore - 1
-                    break
-                case 'Paper':
-                    humanScore = humanScore
-                    computerScore = computerScore
-                    break
-                case 'Scissors':
-                    humanScore = humanScore - 1
-                    computerScore = computerScore + 1
+            if (theComputerChoice === 'Rock') {
+                humanScore = humanScore + 1
+                computerScore = computerScore - 1
+            } else {
+                humanScore = humanScore - 1
+                computerScore = computerScore + 1
             }
             break
         case 'Scissors':
-            switch (theComputerChoice) {
-                case 'Rock':
-                    humanScore = humanScore - 1
-                    computerScore = computerScore + 1
-                    break
-                case 'Paper':
-                    humanScore = humanScore + 1
-                    computerScore = computerScore - 1
-                    break
-                case 'Scissors':
-                    humanScore = humanScore
-                    computerScore = computerScore
+            if (theComputerChoice === 'Paper') {
+                humanScore = humanScore + 1
+                computerScore = computerScore - 1
+            } else {
+                humanScore = humanScore - 1
+                computerScore = computerScore + 1
             }
             break
         default:
